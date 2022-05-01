@@ -8,7 +8,7 @@ cn2tw = false
 maxcount = 3000
 imagepath = ./Images
 ########################### Artwork
-reimage = false
+reimage = true
 width = 618
 height = 618
 pwidth = 710

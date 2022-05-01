@@ -37,3 +37,42 @@ C:\Users\zeak6\Downloads\DataEditorX-master\DataEditorX-master\DataEditorX\obj\D
 C:\Users\zeak6\Downloads\DataEditorX-master\DataEditorX-master\DataEditorX\obj\Debug\DataEditorX.exe
 C:\Users\zeak6\Downloads\DataEditorX-master\DataEditorX-master\DataEditorX\obj\Debug\DataEditorX.pdb
 C:\Users\zeak6\Downloads\DataEditorX-master\DataEditorX-master\DataEditorX\obj\Debug\DataEditorX.csproj.AssemblyReference.cache
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\changed.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\mse_Chinese-Traditional.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\readme_english.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\mse_English.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\mse_Japanese.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\cardinfo_chinese.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\language_chinese.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\mse_Chinese-Simplified.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\constant.lua
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\strings.conf
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\app.config
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\single.lua
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\Magic Set Editor 2\download.bat
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\Magic Set Editor 2\update\readme.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\Magic Set Editor 2\update\update.exe
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\Magic Set Editor 2\update\update.exe.config
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\pack.db
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\readme.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\_functions.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\cover.jpg
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\language_english.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\data\cardinfo_english.txt
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\DataEditorX.exe.config
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\DataEditorX.exe
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\DataEditorX.pdb
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\FastColoredTextBox.dll
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\Newtonsoft.Json.dll
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\System.Data.SQLite.dll
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\bin\Debug\Newtonsoft.Json.xml
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\obj\Debug\DataEditorX.csproj.AssemblyReference.cache
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\obj\Debug\DataEditorX.CodeEditForm.resources
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\obj\Debug\DataEditorX.DataEditForm.resources
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\obj\Debug\DataEditorX.MainForm.resources
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\obj\Debug\DataEditorX.csproj.GenerateResource.cache
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\obj\Debug\DataEditorX.csproj.CoreCompileInputs.cache
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\obj\Debug\DataEditorX.csproj.CopyComplete
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\obj\Debug\DataEditorX.exe
+C:\Users\zeak6\Documents\GitHub\DataEditorX-Omega\DataEditorX\obj\Debug\DataEditorX.pdb

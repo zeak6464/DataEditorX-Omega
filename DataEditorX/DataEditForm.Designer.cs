@@ -124,6 +124,7 @@ namespace DataEditorX
 			this.tb_link = new System.Windows.Forms.TextBox();
 			this.pl_bottom = new System.Windows.Forms.Panel();
 			this.pl_main = new System.Windows.Forms.Panel();
+			this.pl_markers = new DataEditorX.DFlowLayoutPanel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.pl_genre = new DataEditorX.DFlowLayoutPanel();
@@ -140,7 +141,6 @@ namespace DataEditorX
 			this.pl_category = new DataEditorX.DFlowLayoutPanel();
 			this.lb_scripttext = new DataEditorX.DListBox();
 			this.pl_cardtype = new DataEditorX.DFlowLayoutPanel();
-			this.pl_markers = new DataEditorX.DFlowLayoutPanel();
 			this.mainMenu.SuspendLayout();
 			this.pl_bottom.SuspendLayout();
 			this.pl_main.SuspendLayout();
@@ -449,7 +449,7 @@ namespace DataEditorX
 			// 
 			this.menuitem_about.Name = "menuitem_about";
 			this.menuitem_about.ShortcutKeys = System.Windows.Forms.Keys.F1;
-			this.menuitem_about.Size = new System.Drawing.Size(126, 22);
+			this.menuitem_about.Size = new System.Drawing.Size(180, 22);
 			this.menuitem_about.Text = "About";
 			this.menuitem_about.Click += new System.EventHandler(this.Menuitem_aboutClick);
 			// 
@@ -592,7 +592,7 @@ namespace DataEditorX
 			this.lb_pleft_right.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.lb_pleft_right.AutoSize = true;
 			this.lb_pleft_right.BackColor = System.Drawing.SystemColors.Control;
-			this.lb_pleft_right.Location = new System.Drawing.Point(664, 376);
+			this.lb_pleft_right.Location = new System.Drawing.Point(666, 376);
 			this.lb_pleft_right.Name = "lb_pleft_right";
 			this.lb_pleft_right.Size = new System.Drawing.Size(47, 12);
 			this.lb_pleft_right.TabIndex = 7;
@@ -822,7 +822,7 @@ namespace DataEditorX
 			this.lb_categorys.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
 			this.lb_categorys.Size = new System.Drawing.Size(288, 20);
 			this.lb_categorys.TabIndex = 11;
-			this.lb_categorys.Text = "Card Genre";
+			this.lb_categorys.Text = "Card Category";
 			this.lb_categorys.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.lb_categorys.Click += new System.EventHandler(this.lb_categorys_Click);
 			// 
@@ -839,6 +839,7 @@ namespace DataEditorX
 			this.pl_image.TabIndex = 14;
 			this.pl_image.DragDrop += new System.Windows.Forms.DragEventHandler(this.Pl_imageDragDrop);
 			this.pl_image.DragEnter += new System.Windows.Forms.DragEventHandler(this.Pl_imageDragEnter);
+			this.pl_image.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_image_Paint);
 			this.pl_image.DoubleClick += new System.EventHandler(this.pl_image_DoubleClick);
 			// 
 			// lb_types
@@ -1059,6 +1060,18 @@ namespace DataEditorX
 			this.pl_main.TabIndex = 0;
 			this.pl_main.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_main_Paint);
 			// 
+			// pl_markers
+			// 
+			this.pl_markers.AutoScroll = true;
+			this.pl_markers.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.pl_markers.Location = new System.Drawing.Point(882, 533);
+			this.pl_markers.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+			this.pl_markers.Name = "pl_markers";
+			this.pl_markers.Padding = new System.Windows.Forms.Padding(2);
+			this.pl_markers.Size = new System.Drawing.Size(60, 60);
+			this.pl_markers.TabIndex = 20;
+			this.pl_markers.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_markers_Paint);
+			// 
 			// label2
 			// 
 			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1103,7 +1116,7 @@ namespace DataEditorX
 			this.lb_genre.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
 			this.lb_genre.Size = new System.Drawing.Size(314, 20);
 			this.lb_genre.TabIndex = 36;
-			this.lb_genre.Text = "Category";
+			this.lb_genre.Text = "Genre";
 			this.lb_genre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// lb_tcgdate
@@ -1247,18 +1260,6 @@ namespace DataEditorX
 			this.pl_cardtype.Padding = new System.Windows.Forms.Padding(2);
 			this.pl_cardtype.Size = new System.Drawing.Size(312, 150);
 			this.pl_cardtype.TabIndex = 12;
-			// 
-			// pl_markers
-			// 
-			this.pl_markers.AutoScroll = true;
-			this.pl_markers.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.pl_markers.Location = new System.Drawing.Point(882, 533);
-			this.pl_markers.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-			this.pl_markers.Name = "pl_markers";
-			this.pl_markers.Padding = new System.Windows.Forms.Padding(2);
-			this.pl_markers.Size = new System.Drawing.Size(60, 60);
-			this.pl_markers.TabIndex = 20;
-			this.pl_markers.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_markers_Paint);
 			// 
 			// DataEditForm
 			// 

@@ -17,11 +17,11 @@ DataEditForm.mainMenu.menuitem_autoreturn	(*)Text auto return
 DataEditForm.pl_bottom.btn_img	Import Img
 DataEditForm.pl_main.lb_types	Card type
 DataEditForm.pl_main.lb_tiptexts	String Text
-DataEditForm.pl_main.lb_categorys	Genre
+DataEditForm.pl_main.lb_categorys	Category
 DataEditForm.pl_main.lb_cardcode	Code
 DataEditForm.pl_main.lb_cardalias	Alias
 DataEditForm.pl_main.lb_atkdef	ATK
-DataEditForm.pl_main.lb_pleft_right	Pscale
+DataEditForm.pl_main.lb_pleft_right	PscaleL
 DataEditForm.pl_bottom.btn_reset	Reset
 DataEditForm.pl_bottom.btn_lua	Script
 DataEditForm.pl_bottom.btn_serach	Search

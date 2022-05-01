@@ -1876,6 +1876,11 @@ namespace DataEditorX
 
 		}
 
+		private void pl_image_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
 		void Tb_linkKeyPress(object sender, KeyPressEventArgs e)
 		{
 			if(e.KeyChar != '0' && e.KeyChar != '1' && e.KeyChar != 1 && e.KeyChar!=22 && e.KeyChar!=3 && e.KeyChar != 8){
