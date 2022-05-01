@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{3FA42393-3D90-4DE1-93FC-33FCB3045845}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DataEditorX</RootNamespace>
+    <AssemblyName>DataEditorX</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <StartupObject>DataEditorX.Program</StartupObject>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\win32\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FastColoredTextBox">
+      <HintPath>DLL\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>DLL\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>DLL\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodeEditForm.Designer.cs">
+      <DependentUpon>CodeEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CheckUpdate.cs" />
+    <Compile Include="Common\ConfHelper.cs" />
+    <Compile Include="Common\MySortList.cs" />
+    <Compile Include="Common\MyUtils.cs" />
+    <Compile Include="Common\StrUtil.cs" />
+    <Compile Include="Common\XMLReader.cs" />
+    <Compile Include="Config\YgoPath.cs" />
+    <Compile Include="Controls\DFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FastColoredTextBoxEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\MyPath.cs" />
+    <Compile Include="Controls\History.cs" />
+    <Compile Include="Core\CommandManager.cs" />
+    <Compile Include="Core\IDataForm.cs" />
+    <Compile Include="Controls\IEditForm.cs" />
+    <Compile Include="Controls\IMainForm.cs" />
+    <Compile Include="Controls\MySyntaxHighlighter.cs" />
+    <Compile Include="Common\MyBitmap.cs" />
+    <Compile Include="Common\User32.cs" />
+    <Compile Include="Common\ZipStorer.cs" />
+    <Compile Include="Common\Area.cs" />
+    <Compile Include="Config\MyConfig.cs" />
+    <Compile Include="Core\Card.cs" />
+    <Compile Include="Core\Info\CardAttribute.cs" />
+    <Compile Include="Core\CardEdit.cs" />
+    <Compile Include="Core\Info\CardLink.cs" />
+    <Compile Include="Core\Info\CardRace.cs" />
+    <Compile Include="Core\Info\CardRule.cs" />
+    <Compile Include="Core\Info\CardType.cs" />
+    <Compile Include="Config\CodeConfig.cs" />
+    <Compile Include="Core\DataBase.cs" />
+    <Compile Include="Config\DataConfig.cs" />
+    <Compile Include="Config\DataManager.cs" />
+    <Compile Include="Config\ImageSet.cs" />
+    <Compile Include="Core\LuaFunction.cs" />
+    <Compile Include="Core\Mse\CardPack.cs" />
+    <Compile Include="Core\Mse\MSECons.cs" />
+    <Compile Include="Core\Mse\MseMaker.cs" />
+    <Compile Include="Core\Mse\MSEConfig.cs" />
+    <Compile Include="Core\MyTask.cs" />
+    <Compile Include="Core\TaskHelper.cs" />
+    <Compile Include="Core\TCGEditor\CardSet.cs" />
+    <Compile Include="Core\YGOUtil.cs" />
+    <Compile Include="DataEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataEditForm.Designer.cs">
+      <DependentUpon>DataEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Language\LanguageHelper.cs" />
+    <Compile Include="Language\LMsg.cs" />
+    <Compile Include="Language\MyMsg.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="changed.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\mse_Chinese-Traditional.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="readme_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="data\constant.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\strings.conf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="data\language_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\mse_English.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\cardinfo_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\mse_Japanese.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="data\single.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Magic Set Editor 2\download.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Magic Set Editor 2\update\readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Magic Set Editor 2\update\update.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Magic Set Editor 2\update\update.exe.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="pack.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CodeEditForm.resx">
+      <DependentUpon>CodeEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataEditForm.resx">
+      <DependentUpon>DataEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\_functions.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\cardinfo_chinese.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\cover.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\language_chinese.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\mse_Chinese-Simplified.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\TCGEditor" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
