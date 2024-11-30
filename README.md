@@ -1,34 +1,173 @@
 # DataEditorX
-Manage card database(.cdb file) for [ygopro](https://github.com/Fluorohydride/ygopro).
 
-## Download
-https://github.com/Lyris12/DataEditorX/releases/download/omega/win32.zip
+A Windows-based card database editor for YGOPro, built with .NET 6.0. This tool allows you to create, edit, and manage card databases (.cdb files) with an intuitive user interface.
 
-> **FAQ**   
-Q: I can't run the program.   
-A: Please install [.NET Core](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
+## System Requirements
+
+- Windows Operating System
+- [.NET 6.0 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+
+## Building from Source
+
+### Prerequisites
+- Visual Studio 2019 or later
+- .NET 6.0 SDK
+- Windows Forms development workload
+
+### Build Steps
+1. Clone the repository
+2. Open `DataEditorX.sln` in Visual Studio
+3. Restore NuGet packages:
+   - Right-click on the solution in Solution Explorer
+   - Select "Restore NuGet Packages"
+   
+   Alternatively, you can use the Package Manager Console:
+   ```powershell
+   Tools -> NuGet Package Manager -> Package Manager Console
+   PM> Update-Package -reinstall
+   ```
+   
+   Required packages will be automatically restored:
+   - DockPanelSuite (3.1.0)
+   - DockPanelSuite.ThemeVS2015 (3.1.0)
+   - FCTB (2.16.24)
+   - Microsoft.Data.Sqlite (7.0.0-preview.4)
+   - NeoLua (1.3.14)
+   - Newtonsoft.Json (13.0.1)
+   - Serilog (4.1.0)
+   - Serilog.Sinks.Console (6.0.0)
+   - Serilog.Sinks.File (6.0.0)
+
+4. Build the solution in Release mode
+5. The compiled program will be in the `bin/Release/net6.0-windows` directory
 
 ## Features
-* Create and edit card databases.   
-* Compare, copy and paste card records across databases easily.   
-* Read card records from ygopro decks(.ydk file) or card picture folders(eg. pics folder of ygooro).  
-* Create and edit card scripts(.lua file).  
-* Export and import [MSE](https://github.com/247321453/MagicSetEditor2) sets.   
-...
 
-> **FAQ**   
-Q: How to add a new archetype?  
-A: First decide the setcode (a hex number) for the new archetype. Do not confict the existing setcodes. Then type it in the text box on the right of the combo box of archetype. Click Modify. To show the name of the new archetype in the combo box. Open data/cardinfo_xxx.txt (xxx is language), add a new line between "##setname" and "#end", write the setcode (start with 0x) and the archetype name separated by a Tab symbol.
+### Database Management
+- Create, edit, and manage YGOPro card databases (.cdb files)
+- Compare databases and copy cards between them
+- Batch operations for multiple cards
+- Import cards from:
+  - YGOPro deck files (.ydk)
+  - Card picture folders
+  - MSE (Magic Set Editor) sets
+- Export to MSE format
+- Automatic database backups
+- Search and filter cards by various attributes
 
-## Language
-Open Menu Help-->Language to choose language, then restart the application.   
-If you want to add a language xxx for DataEditorX, you need two files:    
->data/language_xxx.txt for graphic interface   
-data/cardinfo_xxx.txt for card information    
+### Card Editor
+- Full card property editing:
+  - Card types (Monster/Spell/Trap)
+  - Card attributes and stats
+  - Card text and effects
+  - Archetype management
+- Real-time card preview
+- Support for all card types:
+  - Normal Monsters
+  - Effect Monsters
+  - Fusion/Synchro/Xyz/Link Monsters
+  - Pendulum Monsters
+  - Spell Cards
+  - Trap Cards
 
-Each line in language_english.txt/cardinfo_english.txt is separate by a Tab. Translate the content on the right of Tab then put them in language_xxx.txt/cardinfo_xxx.txt.
+### Script Editor
+- Advanced Lua script editor with:
+  - Syntax highlighting
+  - Auto-completion
+  - Function tooltips
+  - Code folding
+  - Find and replace
+  - Multiple file support
+  - Template support 
+- Koishi-Style script formatting
+- Module script support
+- Script templates
+- Error checking and validation
+- Script packaging for distribution
 
-## Special Features of KoishiDEX
-1. The format of scripts will be in Koishi-Style when creating new scripts. Also the module script to be required will be adjustable, and will be packed when exporting zip files.
-2. Scripts of Non-Pendulum Normal monsters will be openable, for creating module scripts.
-3. Will ignore the card alias when opening a script.
+### User Interface
+- Modern docking interface (DockPanelSuite)
+- Customizable layout
+- Multi-monitor support
+- Dark/Light theme support
+- Font customization
+- Word wrap options
+- IME support for international text input
+
+### Localization
+- Multi-language support
+  - English
+  - Chinese
+- Easy language switching
+- Custom language file support
+- Separate UI and card data translations
+
+### Advanced Features
+- Command history with undo/redo
+- Automatic updates checking
+- Archetype management system
+- Card image handling
+- Database optimization tools
+- Error logging and diagnostics
+- Configuration backup and restore
+
+### Developer Tools
+- Comprehensive logging system (Serilog)
+- Debug mode for development
+- Performance monitoring
+- Error tracking
+- Custom script module support
+
+## Project Structure
+
+```
+DataEditorX/
+├── Common/         # Common utilities
+├── Config/         # Configuration management
+├── Controls/       # Custom UI controls
+├── Core/           # Core functionality
+├── Language/       # Localization
+├── data/          # Resource files
+│   ├── cardinfo_*.txt    # Card information
+│   ├── language_*.txt    # UI translations
+│   └── *.lua            # Lua templates
+└── templates/     # Template files
+```
+
+## Language Support
+
+The application supports multiple languages through translation files:
+- `data/language_xxx.txt`: UI translations
+- `data/cardinfo_xxx.txt`: Card information
+
+Currently supported languages:
+- English
+- Chinese
+
+## Command Line Arguments
+
+The program supports the following command line arguments:
+- No arguments: Normal startup
+- File path: Opens the specified database file
+- Language save tags: Saves language configurations
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## Version
+
+Current Version: 4.0.2.6
+
+## License
+
+This project uses various open-source components:
+- DockPanelSuite (3.1.0)
+- FCTB (2.16.24)
+- NeoLua (1.3.14)
+- Newtonsoft.Json (13.0.1)
+- Serilog (4.1.0)
