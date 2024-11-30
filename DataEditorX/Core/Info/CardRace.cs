@@ -5,7 +5,6 @@
  * 时间: 9:44
  * 
  */
-using System;
 
 namespace DataEditorX.Core.Info
 {
@@ -65,15 +64,5 @@ namespace DataEditorX.Core.Info
         RACE_WYRM = 0x800000,
         ///<summary>电子界</summary>
         RACE_CYBERSE = 0x1000000,
-        ///<summary>CY</summary>
-        RACE_CYBORG =  0x2000000,
-        ///<summary>MK</summary>
-        RACE_MAGICALKNIGHT = 0x4000000,
-        ///<summary>HD</summary>
-        RACE_HYDRAGON = 0x8000000,
-        ///<summary>OP</summary>
-        RACE_OMEGAPSYCHO = 0x10000000,
-        ///<summary>CK</summary>
-        RACE_CELESTIALKNIGHT = 0x20000000,    
     }
 }

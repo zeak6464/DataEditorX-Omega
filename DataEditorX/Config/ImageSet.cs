@@ -5,9 +5,6 @@
  * 时间: 9:02
  * 
  */
-using System;
-using System.Configuration;
-using DataEditorX.Config;
 using DataEditorX.Common;
 
 namespace DataEditorX.Config
@@ -16,32 +13,33 @@ namespace DataEditorX.Config
     /// 裁剪图片是、配置
     /// </summary>
 	public class ImageSet
-	{
-		public ImageSet(){
+    {
+        public ImageSet()
+        {
             Init();
-		}
+        }
         //初始化
-		void Init()
-		{
-            this.normalArea = MyConfig.readArea(MyConfig.TAG_IMAGE_OTHER);
+        void Init()
+        {
+            normalArea = DEXConfig.ReadArea(DEXConfig.TAG_IMAGE_OTHER);
 
-            this.xyzArea = MyConfig.readArea(MyConfig.TAG_IMAGE_XYZ);
+            xyzArea = DEXConfig.ReadArea(DEXConfig.TAG_IMAGE_XYZ);
 
-            this.pendulumArea = MyConfig.readArea(MyConfig.TAG_IMAGE_PENDULUM);
+            pendulumArea = DEXConfig.ReadArea(DEXConfig.TAG_IMAGE_PENDULUM);
 
-            int[] ints = MyConfig.readIntegers(MyConfig.TAG_IMAGE_SIZE, 4);
+            int[] ints = DEXConfig.ReadIntegers(DEXConfig.TAG_IMAGE_SIZE, 4);
 
-            this.w = ints[0];
-            this.h = ints[1];
-            this.W = ints[2];
-            this.H = ints[3];
+            w = ints[0];
+            h = ints[1];
+            W = ints[2];
+            H = ints[3];
 
-            this.quilty = MyConfig.readInteger(MyConfig.TAG_IMAGE_QUILTY, 95);
-		}
+            quality = DEXConfig.ReadInteger(DEXConfig.TAG_IMAGE_QUALITY, 95);
+        }
         /// <summary>
         /// jpeg质量
         /// </summary>
-		public int quilty;
+		public int quality;
         /// <summary>
         /// 小图的宽
         /// </summary>
@@ -70,5 +68,5 @@ namespace DataEditorX.Config
         /// p怪的中间图
         /// </summary>
         public Area pendulumArea;
-	}
+    }
 }

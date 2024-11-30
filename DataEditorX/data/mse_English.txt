@@ -8,7 +8,7 @@ cn2tw = false
 maxcount = 3000
 imagepath = ./Images
 ########################### Artwork
-reimage = true
+reimage = false
 width = 618
 height = 618
 pwidth = 710
@@ -56,11 +56,6 @@ race 0x200000 Divine-Beast
 race 0x400000 Creator God
 race 0x800000 Wyrm
 race 0x1000000 Cyberse
-race 0x2000000 Cyborg
-race 0x4000000 Magical Knight
-race 0x8000000 High Dragon
-race 0x10000000 Omega Psychic  
-race 0x20000000 Celestial Warrior
 ###########################
 ##type
 type 0x1 Monster

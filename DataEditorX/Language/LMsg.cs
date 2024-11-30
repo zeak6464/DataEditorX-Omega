@@ -5,13 +5,12 @@
  * 时间: 10:21
  * 
  */
-using System;
 
 namespace DataEditorX.Language
 {
     public enum LMSG : uint
     {
-        titleInfo = 0 ,
+        titleInfo = 0,
         titleError = 0x1,
         titleWarning = 0x2,
         titleQuestion = 0x3,
@@ -52,11 +51,11 @@ namespace DataEditorX.Language
         ydkType = 0x22,
         Setcode_error = 0x23,
         SelectImage = 0x24,
-        ImageType =0x25,
+        ImageType = 0x25,
         RunError = 0x26,
         checkUpdate = 0x27,
         CopyCardsToDB = 0x28,
-        CopyCardsToDBIsOK =0x29,
+        CopyCardsToDBIsOK = 0x29,
         selectMseset = 0x2a,
         MseType = 0x2b,
         SaveMse = 0x2c,
@@ -84,16 +83,20 @@ namespace DataEditorX.Language
         CheckText = 0x40,
         CompareOK = 0x41,
         OpenFile = 0x42,
-        ScriptFilter =0x43,
+        ScriptFilter = 0x43,
         NewFile = 0x44,
         SaveFileOK = 0x45,
-        IfSaveScript =0x46,
+        IfSaveScript = 0x46,
         ReadMSE = 0x47,
         ReadMSEisOK = 0x48,
 
-		PlzRestart = 0x49,
-		exportMseImages = 0x4a,
-		exportMseImagesErr = 0x4b,
+        PlzRestart = 0x49,
+        exportMseImages = 0x4a,
+        exportMseImagesErr = 0x4b,
+        syntaxCheckPassed = 0x4c,
+        IfOpenLotsOfFile = 0x4d,
+        UndoConfirm = 0x4e,
+        InvalidFileName = 0x4f,
         COUNT,
     }
 }

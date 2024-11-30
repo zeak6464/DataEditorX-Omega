@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-using FastColoredTextBoxNS;
+﻿using FastColoredTextBoxNS;
 
 namespace DataEditorX.Config
 {
@@ -21,9 +17,9 @@ namespace DataEditorX.Config
         }
 
         //函数提示
-        SortedList<string, string> tooltipDic;
-        SortedList<string, string> longTooltipDic;
-        List<AutocompleteItem> items;
+        readonly SortedList<string, string> tooltipDic;
+        readonly SortedList<string, string> longTooltipDic;
+        readonly List<AutocompleteItem> items;
         /// <summary>
         /// 输入提示
         /// </summary>
@@ -72,7 +68,7 @@ namespace DataEditorX.Config
                     if (line.StartsWith("!victory")
                        || line.StartsWith("!counter"))
                     {
-                        string[] ws = line.Split(' ');
+                        string[] ws = line.Split(new char[] { ' ' }, 3);
                         if (ws.Length > 2)
                         {
                             AddToolIipDic(ws[1], ws[2]);
@@ -88,7 +84,10 @@ namespace DataEditorX.Config
         public void AddFunction(string funtxt)
         {
             if (!File.Exists(funtxt))
+            {
                 return;
+            }
+
             string[] lines = File.ReadAllLines(funtxt);
             bool isFind = false;
             string name = "";
@@ -98,7 +97,10 @@ namespace DataEditorX.Config
                 if (string.IsNullOrEmpty(line)
                    || line.StartsWith("==")
                    || line.StartsWith("#"))
+                {
                     continue;
+                }
+
                 if (line.StartsWith("●"))
                 {
                     //add
@@ -128,20 +130,25 @@ namespace DataEditorX.Config
         {
             //conList.Add("con");
             if (!File.Exists(conlua))
+            {
                 return;
+            }
+
             string[] lines = File.ReadAllLines(conlua);
             foreach (string line in lines)
             {
                 if (line.StartsWith("--"))
+                {
                     continue;
-                string k = line, desc = line;
+                }
+
                 int t = line.IndexOf("=");
-                int t2 = line.IndexOf("--");
+                _ = line.IndexOf("--");
                 //常量 = 0x1 ---注释
-                k = (t > 0) ? line.Substring(0, t).TrimEnd(new char[] { ' ', '\t' })
+                string k = (t > 0) ? line[..t].TrimEnd(new char[] { ' ', '\t' })
                     : line;
-                desc = (t > 0) ? line.Substring(t + 1).Replace("--", "\n")
-                    : line;
+                string desc = (t > 0) ? line[(t + 1)..].Replace("--", "\n")
+    : line;
                 AddToolIipDic(k, desc);
             }
         }
@@ -153,28 +160,40 @@ namespace DataEditorX.Config
             items.Clear();
             foreach (string k in tooltipDic.Keys)
             {
-                AutocompleteItem item = new AutocompleteItem(k);
-                item.ToolTipTitle = k;
-                item.ToolTipText = tooltipDic[k];
+                AutocompleteItem item = new(k)
+                {
+                    ToolTipTitle = k,
+                    ToolTipText = tooltipDic[k]
+                };
                 items.Add(item);
             }
             foreach (string k in longTooltipDic.Keys)
             {
                 if (tooltipDic.ContainsKey(k))
+                {
                     continue;
-                AutocompleteItem item = new AutocompleteItem(k);
-                item.ToolTipTitle = k;
-                item.ToolTipText = longTooltipDic[k];
+                }
+
+                AutocompleteItem item = new(k)
+                {
+                    ToolTipTitle = k,
+                    ToolTipText = longTooltipDic[k]
+                };
                 items.Add(item);
             }
         }
-        string GetShortName(string name)
+
+        static string GetShortName(string name)
         {
             int t = name.IndexOf(".");
             if (t > 0)
-                return name.Substring(t + 1);
+            {
+                return name[(t + 1)..];
+            }
             else
+            {
                 return name;
+            }
         }
         void AddToolIipDic(string key, string val)
         {
@@ -183,12 +202,17 @@ namespace DataEditorX.Config
             {
                 string nval = tooltipDic[skey];
                 if (!nval.EndsWith(Environment.NewLine))
+                {
                     nval += Environment.NewLine;
-                nval += Environment.NewLine +val;
+                }
+
+                nval += Environment.NewLine + val;
                 tooltipDic[skey] = nval;
             }
             else
+            {
                 tooltipDic.Add(skey, val);
+            }
             //
             AddLongToolIipDic(key, val);
         }
@@ -198,12 +222,17 @@ namespace DataEditorX.Config
             {
                 string nval = longTooltipDic[key];
                 if (!nval.EndsWith(Environment.NewLine))
+                {
                     nval += Environment.NewLine;
+                }
+
                 nval += Environment.NewLine + val;
                 longTooltipDic[key] = nval;
             }
             else
+            {
                 longTooltipDic.Add(key, val);
+            }
         }
         #endregion
     }

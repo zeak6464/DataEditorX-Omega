@@ -5,6 +5,7 @@ CodeEditForm.mainMenu.menuitem_save	保存
 CodeEditForm.mainMenu.menuitem_saveas	另存为
 CodeEditForm.mainMenu.menuitem_quit	退出
 CodeEditForm.mainMenu.menuitem_setting	选项(&S)
+CodeEditForm.mainMenu.menuitem_tooltipFont	设置函数提示字体
 CodeEditForm.mainMenu.menuitem_showmap	显示/隐藏结构图
 CodeEditForm.mainMenu.menuitem_showinput	显示/隐藏输入框
 CodeEditForm.mainMenu.menuitem_find	查找
@@ -12,16 +13,49 @@ CodeEditForm.mainMenu.menuitem_replace	替换
 CodeEditForm.mainMenu.menuitem_setcard	设置卡片库
 CodeEditForm.mainMenu.menuitem_help	帮助(&H)
 CodeEditForm.mainMenu.menuitem_about	关于
+CodeEditForm.mainMenu.menuitem_tools	工具(&T)
+CodeEditForm.mainMenu.menuitem_testlua	语法错误检查
+CodeEditForm.mainMenu.menuitem_effectcreator	效果生成器
+#
+FindReplaceForm	查找/替换
+FindReplaceForm.btnFind	查找
+FindReplaceForm.btnReplace	替换
+FindReplaceForm.btnReplaceAll	替换所有
+FindReplaceForm.btnClose	关闭
+FindReplaceForm.lbFind	查找
+FindReplaceForm.lbReplace	替换
+#
+CodeEditForm_Avalon.mainMenu.menuitem_file	文件(&F)
+CodeEditForm_Avalon.mainMenu.menuitem_open	打开
+CodeEditForm_Avalon.mainMenu.menuitem_save	保存
+CodeEditForm_Avalon.mainMenu.menuitem_saveas	另存为
+CodeEditForm_Avalon.mainMenu.menuitem_quit	退出
+CodeEditForm_Avalon.mainMenu.menuitem_setting	选项(&S)
+CodeEditForm_Avalon.mainMenu.menuitem_tooltipFont	设置函数提示字体
+CodeEditForm_Avalon.mainMenu.menuitem_showmap	显示/隐藏结构图
+CodeEditForm_Avalon.mainMenu.menuitem_showinput	显示/隐藏输入框
+CodeEditForm_Avalon.mainMenu.menuitem_find	查找
+CodeEditForm_Avalon.mainMenu.menuitem_replace	替换
+CodeEditForm_Avalon.mainMenu.menuitem_setcard	设置卡片库
+CodeEditForm_Avalon.mainMenu.menuitem_help	帮助(&H)
+CodeEditForm_Avalon.mainMenu.menuitem_about	关于
+CodeEditForm_Avalon.mainMenu.menuitem_tools	工具(&T)
+CodeEditForm_Avalon.mainMenu.menuitem_testlua	语法错误检查
+CodeEditForm_Avalon.mainMenu.menuitem_effectcreator	效果生成器
+CodeEditForm_Avalon.mainMenu.menuitem_CEFont	设置CodeEditor字体
+CodeEditForm_Avalon.mainMenu.menuitem_fixCardCode	一键修正卡片代号
 #
 DataEditForm.pl_bottom.btn_img	导入图片
-DataEditForm.pl_main.lb_types	卡片类型
-DataEditForm.pl_main.lb_markers	连接标记
-DataEditForm.pl_main.lb_tiptexts	脚本提示文字
-DataEditForm.pl_main.lb_categorys	效果分类
-DataEditForm.pl_main.lb_cardcode	卡片密码
-DataEditForm.pl_main.lb_cardalias	同名卡
-DataEditForm.pl_main.lb_atkdef	ATK/DEF
-DataEditForm.lb_pleft_right	灵摆刻度
+DataEditForm.pl_main.splitContainer..lb_types	卡片类型
+DataEditForm.pl_main.splitContainer..lb_markers	连接标记
+DataEditForm.pl_main.splitContainer..lb_tiptexts	脚本提示文字
+DataEditForm.pl_main.splitContainer..lb_categorys	效果分类
+DataEditForm.pl_main.splitContainer..lb_cardcode	卡片密码
+DataEditForm.pl_main.splitContainer..lb_cardalias	同名卡
+DataEditForm.pl_main.splitContainer..lb_atkdef	ATK/DEF
+DataEditForm.pl_main.splitContainer..lb_pleft_right	灵摆刻度
+DataEditForm.pl_main.splitContainer..lv_cardlist.0	卡片编码
+DataEditForm.pl_main.splitContainer..lv_cardlist.1	卡片名称
 DataEditForm.pl_bottom.btn_reset	重置
 DataEditForm.pl_bottom.btn_lua	脚本
 DataEditForm.pl_bottom.btn_serach	搜索
@@ -46,6 +80,7 @@ DataEditForm.mainMenu.menuitem_mseconfig	设置MSE的配置文件
 DataEditForm.mainMenu.menu_data	数据(&D)
 DataEditForm.mainMenu.menuitem_operacardsfile	同步操作卡片图片和脚本
 DataEditForm.mainMenu.menuitem_openfileinthis	用CodeEditor打开脚本
+DataEditForm.mainMenu.menuitem_addrequire	创建脚本时自动添加require
 DataEditForm.mainMenu.menuitem_findluafunc	从C++源码查找Lua函数
 DataEditForm.mainMenu.menuitem_readydk	从卡组文件读取卡片(&Y)
 DataEditForm.mainMenu.menuitem_readimages	从卡图文件夹读取卡片(&I)
@@ -68,6 +103,7 @@ DataEditForm.mainMenu.menuitem_checkupdate	检查更新
 DataEditForm.mainMenu.menuitem_autocheckupdate	自动检查更新
 DataEditForm.mainMenu.menuitem_github	源码
 DataEditForm.mainMenu.menuitem_autoreturn	(特殊功能)中文自动换行
+DataEditForm.mainMenu.menuitem_replace	(特殊功能)批量替换文本
 #
 MainForm.mainMenu.menuitem_file	文件(&F)
 MainForm.mainMenu.menuitem_open	打开
@@ -121,7 +157,7 @@ MainForm.mainMenu.menuitem_closeall	关闭所有
 0x1e	关于：
 0x1f	版本：
 0x20	作者：
-0x21	数据库文件(*.cdb)|*.cdb|所有文件(*.*)|*.*
+0x21	数据库文件(*.cdb)|*.cdb|脚本文件(*.lua)|*.lua|所有文件(*.*)|*.*
 0x22	卡组文件(*.ydk)|*.ydk|所有文件(*.*)|*.*
 0x23	系列号输入出错！
 0x24	选择卡片图像
@@ -155,7 +191,7 @@ MainForm.mainMenu.menuitem_closeall	关闭所有
 0x40	是否对比卡片信息？
 0x41	对比完成
 0x42	打开文件
-0x43	脚本文件(*.lua)|*.lua|所有文件(*.*)|*.*
+0x43	脚本文件(*.lua)|*.lua|数据库文件(*.cdb)|*.cdb|所有文件(*.*)|*.*
 0x44	新建文件
 0x45	保存完成
 0x46	是否保存脚本？
@@ -164,3 +200,7 @@ MainForm.mainMenu.menuitem_closeall	关闭所有
 0x49	请重启程序使更改生效。
 0x4a	从MSE存档导出图片完成。
 0x4b	从MSE存档导出图片失败。
+0x4c	测试完成，没有发现语法错误。
+0x4d	一次性打开大量文件将导致卡顿，是否继续？
+0x4e	确定要进行撤销吗？所有未保存的内容都将丢失。
+0x4f	无效的文件名。只支持类似[cXXXXXXXX.lua]的文件。

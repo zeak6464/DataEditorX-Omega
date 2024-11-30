@@ -1,39 +1,39 @@
-﻿using System;
-using System.Text;
-using System.IO;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Microsoft.VisualBasic.FileIO;
-using System.Configuration;
-using DataEditorX.Config;
-
+﻿using DataEditorX.Config;
 using DataEditorX.Core.Info;
+using Microsoft.VisualBasic.FileIO;
+using System.Text;
 
 namespace DataEditorX.Core
 {
     static class YGOUtil
     {
-        static DataConfig datacfg;
+        static DataConfig _datacfg;
         static YGOUtil()
         {
-            datacfg = new DataConfig();
+            _datacfg = new DataConfig();
         }
         public static void SetConfig(DataConfig dcfg)
         {
-            datacfg = dcfg;
+            _datacfg = dcfg;
         }
 
         #region 判断文件类型
-        public static bool isScript(string file)
+        public static bool IsScript(string file)
         {
             if (file != null && file.EndsWith(".lua", StringComparison.OrdinalIgnoreCase))
+            {
                 return true;
+            }
+
             return false;
         }
-        public static bool isDataBase(string file)
+        public static bool IsDataBase(string file)
         {
-            if (file != null && file.EndsWith(".cdb", StringComparison.OrdinalIgnoreCase))
+            if (file != null && (file.EndsWith(".cdb", StringComparison.OrdinalIgnoreCase) || file.EndsWith(".db", StringComparison.OrdinalIgnoreCase) || file.EndsWith(".bytes", StringComparison.OrdinalIgnoreCase)))
+            {
                 return true;
+            }
+
             return false;
         }
         #endregion
@@ -41,13 +41,13 @@ namespace DataEditorX.Core
         #region 获取属性，种族
         public static string GetAttributeString(int attr)
         {
-            return DataManager.GetValue(datacfg.dicCardAttributes, attr);
+            return DataManager.GetValue(_datacfg.dicCardAttributes, attr);
         }
 
 
         public static string GetRace(long race)
         {
-            return DataManager.GetValue(datacfg.dicCardRaces, race);
+            return DataManager.GetValue(_datacfg.dicCardRaces, race);
         }
         #endregion
 
@@ -82,33 +82,56 @@ namespace DataEditorX.Core
                     str = GetType(CardType.TYPE_EFFECT);
                 }
                 else
+                {
                     str = GetType(CardType.TYPE_NORMAL);
+                }
+
                 str += GetType(CardType.TYPE_MONSTER);
             }
             else if (c.IsType(CardType.TYPE_SPELL))
             {
                 if (c.IsType(CardType.TYPE_EQUIP))
+                {
                     str = GetType(CardType.TYPE_EQUIP);
+                }
                 else if (c.IsType(CardType.TYPE_QUICKPLAY))
+                {
                     str = GetType(CardType.TYPE_QUICKPLAY);
+                }
                 else if (c.IsType(CardType.TYPE_FIELD))
+                {
                     str = GetType(CardType.TYPE_FIELD);
+                }
                 else if (c.IsType(CardType.TYPE_CONTINUOUS))
+                {
                     str = GetType(CardType.TYPE_CONTINUOUS);
+                }
                 else if (c.IsType(CardType.TYPE_RITUAL))
+                {
                     str = GetType(CardType.TYPE_RITUAL);
+                }
                 else
+                {
                     str = GetType(CardType.TYPE_NORMAL);
+                }
+
                 str += GetType(CardType.TYPE_SPELL);
             }
             else if (c.IsType(CardType.TYPE_TRAP))
             {
                 if (c.IsType(CardType.TYPE_CONTINUOUS))
+                {
                     str = GetType(CardType.TYPE_CONTINUOUS);
+                }
                 else if (c.IsType(CardType.TYPE_COUNTER))
+                {
                     str = GetType(CardType.TYPE_COUNTER);
+                }
                 else
+                {
                     str = GetType(CardType.TYPE_NORMAL);
+                }
+
                 str += GetType(CardType.TYPE_TRAP);
             }
             return str.Replace(" ", "");
@@ -116,21 +139,28 @@ namespace DataEditorX.Core
 
         static string GetType(CardType type)
         {
-            return DataManager.GetValue(datacfg.dicCardTypes, (long)type);
+            return DataManager.GetValue(_datacfg.dicCardTypes, (long)type);
         }
 
         public static string GetTypeString(long type)
         {
             string str = "";
-            foreach (long k in datacfg.dicCardTypes.Keys)
+            foreach (long k in _datacfg.dicCardTypes.Keys)
             {
                 if ((type & k) == k)
+                {
                     str += GetType((CardType)k) + "|";
+                }
             }
             if (str.Length > 0)
-                str = str.Substring(0, str.Length - 1);
+            {
+                str = str[..^1];
+            }
             else
+            {
                 str = "???";
+            }
+
             return str;
         }
         #endregion
@@ -142,10 +172,10 @@ namespace DataEditorX.Core
             long sc2 = (setcode >> 0x10) & 0xffff;
             long sc3 = (setcode >> 0x20) & 0xffff;
             long sc4 = (setcode >> 0x30) & 0xffff;
-            string setname = DataManager.GetValue(datacfg.dicSetnames, sc1)
-                    + " " + DataManager.GetValue(datacfg.dicSetnames, sc2)
-                    + " " + DataManager.GetValue(datacfg.dicSetnames, sc3)
-                    + " " + DataManager.GetValue(datacfg.dicSetnames, sc4);
+            string setname = DataManager.GetValue(_datacfg.dicSetnames, sc1)
+                    + " " + DataManager.GetValue(_datacfg.dicSetnames, sc2)
+                    + " " + DataManager.GetValue(_datacfg.dicSetnames, sc3)
+                    + " " + DataManager.GetValue(_datacfg.dicSetnames, sc4);
 
             return setname;
         }
@@ -160,28 +190,31 @@ namespace DataEditorX.Core
         public static string[] ReadYDK(string ydkfile)
         {
             string str;
-            List<string> IDs = new List<string>();
+            List<string> IDs = new();
             if (File.Exists(ydkfile))
             {
-                using (FileStream f = new FileStream(ydkfile, FileMode.Open, FileAccess.Read))
+                using FileStream f = new(ydkfile, FileMode.Open, FileAccess.Read);
+                StreamReader sr = new(f, Encoding.Default);
+                str = sr.ReadLine();
+                while (str != null)
                 {
-                    StreamReader sr = new StreamReader(f, Encoding.Default);
-                    str = sr.ReadLine();
-                    while (str != null)
+                    if (int.TryParse(str.Trim(), out _) && str.Length > 0)
                     {
-                        if (!str.StartsWith("!") && !str.StartsWith("#") && str.Length > 0)
+                        if (IDs.IndexOf(str) < 0)
                         {
-                            if (IDs.IndexOf(str) < 0)
-                                IDs.Add(str);
+                            IDs.Add(str);
                         }
-                        str = sr.ReadLine();
                     }
-                    sr.Close();
-                    f.Close();
+                    str = sr.ReadLine();
                 }
+                sr.Close();
+                f.Close();
             }
             if (IDs.Count == 0)
+            {
                 return null;
+            }
+
             return IDs.ToArray();
         }
         #endregion
@@ -189,14 +222,26 @@ namespace DataEditorX.Core
         #region 图像
         public static string[] ReadImage(string path)
         {
-            List<string> list = new List<string>();
+            List<string> list = new();
             string[] files = Directory.GetFiles(path, "*.*");
             int n = files.Length;
             for (int i = 0; i < n; i++)
             {
                 string ex = Path.GetExtension(files[i]).ToLower();
-                if (ex == ".jpg" || ex == ".png" || ex == ".bmp")
-                    list.Add(Path.GetFileNameWithoutExtension(files[i]));
+                if ((ex == ".jpg" || ex == ".png" || ex == ".bmp") && int.TryParse(Path.GetFileNameWithoutExtension(files[i]), out int s))
+                        list.Add(s.ToString());
+            }
+            return list.ToArray();
+        }
+        public static string[] ReadScript(string path)
+        {
+            List<string> list = new();
+            string[] files = Directory.GetFiles(path, "*.lua");
+            int n = files.Length;
+            for (int i = 0; i < n; i++)
+            {
+                if (int.TryParse(Path.GetFileNameWithoutExtension(files[i])[(Path.GetFileName(files[i])[0] == 'c' ? 1 : 0)..], out int s))
+                    list.Add(s.ToString());
             }
             return list.ToArray();
         }
@@ -207,11 +252,13 @@ namespace DataEditorX.Core
         public static void CardDelete(long id, YgoPath ygopath)
         {
             string[] files = ygopath.GetCardfiles(id);
-			for (int i = 0; i < files.Length; i++)
-			{
-					if (FileSystem.FileExists(files[i]))
-						FileSystem.DeleteFile(files[i], UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-			}
+            for (int i = 0; i < files.Length; i++)
+            {
+                if (FileSystem.FileExists(files[i]))
+                {
+                    FileSystem.DeleteFile(files[i], UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                }
+            }
         }
         #endregion
 
@@ -226,32 +273,34 @@ namespace DataEditorX.Core
             {
                 if (File.Exists(oldfiles[i]))
                 {
-					try {
-						File.Move(oldfiles[i], newfiles[i]);
-					}
-					catch { }
+                    try
+                    {
+                        File.Move(oldfiles[i], newfiles[i]);
+                    }
+                    catch { }
                 }
             }
         }
-		#endregion
+        #endregion
 
-		#region 复制资源
-		public static void CardCopy(long newid, long oldid, YgoPath ygopath)
-		{
-			string[] newfiles = ygopath.GetCardfiles(newid);
-			string[] oldfiles = ygopath.GetCardfiles(oldid);
+        #region 复制资源
+        public static void CardCopy(long newid, long oldid, YgoPath ygopath)
+        {
+            string[] newfiles = ygopath.GetCardfiles(newid);
+            string[] oldfiles = ygopath.GetCardfiles(oldid);
 
-			for (int i = 0; i < oldfiles.Length; i++)
-			{
-				if (File.Exists(oldfiles[i]))
-				{
-					try {
-						File.Copy(oldfiles[i], newfiles[i], false);
-					}
-					catch { }
-				}
-			}
-		}
-		#endregion
-	}
+            for (int i = 0; i < oldfiles.Length; i++)
+            {
+                if (File.Exists(oldfiles[i]))
+                {
+                    try
+                    {
+                        File.Copy(oldfiles[i], newfiles[i], false);
+                    }
+                    catch { }
+                }
+            }
+        }
+        #endregion
+    }
 }

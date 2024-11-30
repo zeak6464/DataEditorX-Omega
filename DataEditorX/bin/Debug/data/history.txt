@@ -1,5 +1,0 @@
-# database history
-C:\Users\zeak6\Downloads\OmegaDB.cdb
-C:\Users\zeak6\Downloads\Custom.cdb
-C:\Users\zeak6\Downloads\cards.cdb
-# script history
