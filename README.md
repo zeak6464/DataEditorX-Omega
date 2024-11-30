@@ -1,6 +1,169 @@
 # DataEditorX
 
-A Windows-based card database editor for YGOPro, built with .NET 6.0. This tool allows you to create, edit, and manage card databases (.cdb files) with an intuitive user interface.
+A powerful database management tool for Yu-Gi-Oh! card databases (.cdb files) used with [YGOPro](https://github.com/Fluorohydride/ygopro). DataEditorX allows you to create, edit, and manage card databases with an intuitive user interface.
+
+## Original Source
+https://github.com/Lyris12/DataEditorX
+
+## Getting Started
+
+### Installation
+1. Download the latest release
+2. Extract the files to your desired location
+3. Run `DataEditorX.exe`
+
+### Initial Setup
+1. The default interface language is Chinese
+2. To change to English:
+   - Go to Help → Language
+   - Select English
+   - Restart the application
+
+## Basic Usage
+
+### Database Operations
+- **Create New Database:**
+  1. Click File → New
+  2. Choose save location
+  3. Name your .cdb file
+  
+- **Open Existing Database:**
+  - File → Open
+  - Or use File → Database History for recent files
+
+### Card Management
+
+#### Adding Cards
+1. Fill in the required fields:
+   - Card name
+   - Card Code (ID)
+   - Other properties
+
+2. Click "Add" button
+
+#### Required Fields Explanation
+
+##### Rule Format
+- **KoishiPRO:** Select "Anime" for customs
+- **EdoPRO:** Select "Custom" (with updated cardinfo_english.txt)
+
+##### Card Types
+- Multiple selections allowed
+- Some types enable/disable specific fields
+  - Example: Link type enables Link Markers, disables DEF
+
+##### Card Properties
+- **Attribute:** For monster cards
+- **Level/Rank/Link Rating:** Based on card type
+- **Race:** Monster type (Warrior, Fairy, etc.)
+
+##### Card Numbers
+- **Card Code (ID):**
+  - Must be positive integer
+  - KoishiPRO: 1 to 268,435,455
+  - EdoPRO: 1 to 4,294,967,295
+  
+  Reserved Ranges (EdoPRO):
+  - 10ZXXXYYY: Pre-release TCG/OCG
+  - 100XXXYYY: Video Game cards
+  - 160XXXYYY: Rush cards
+  - 300XXXYYY: Skill cards
+  - 5ZZXXXYYY/200XXXYYY: Anime/manga cards
+
+##### Archetype System
+- Up to 4 archetypes per card
+- Selection methods:
+  1. Choose from predefined list
+  2. Enter hex code (0 to FFFF)
+  - 3-digit codes: Regular archetypes
+  - 4-digit codes: Sub-archetypes
+
+### Advanced Features
+
+#### Multiple Database Management
+- Open multiple databases simultaneously
+- Arrange database windows:
+  - Drag-and-drop interface
+  - Split window support
+  - Customizable layouts
+
+#### Batch Operations
+1. Select multiple cards:
+   - Drag select
+   - Ctrl + Click for individual selection
+   - Shift + Click for range selection
+2. Perform operations:
+   - Copy/Paste between databases
+   - Batch delete
+   - Batch modify
+
+#### Data Recovery
+- Undo/Redo support
+- Automatic backups
+- Change history tracking
+
+## Card Editor Details
+
+### Description Fields
+- Large text box for card effects/flavor text
+- Support for both effect text and normal monster descriptions
+- Multi-language text support
+
+### Tips Text System
+- 16 customizable text fields
+- Accessible via script through `Auxiliary.Stringid`
+- String IDs range from 0 to 15
+- Used for effect descriptions and prompts
+
+### Alias System
+- Set alternative names for cards
+- Rules for ID differences:
+  - Alternative artwork: ID difference ≤ 9
+  - Name treatment: ID difference > 9
+- Affects card recognition and deck building restrictions
+
+### Categories and Tags
+- Optional card categorization
+- Search filters in deck builder
+- No gameplay impact
+- Useful for organization
+
+## Database Management
+
+### Page Navigation
+- Cards organized in pages
+- Navigate using arrow buttons
+- Direct page number input
+- Search and filter capabilities
+
+### Search Functions
+1. Set search criteria in any field
+2. Click Search button
+3. Results displayed in left column
+4. Reset to show all entries
+
+### Entry Management
+- **Modify:** Update existing entries
+- **Delete:** Remove with confirmation
+- **Reset:** Clear all fields
+- **Undo:** Revert changes
+- **Copy/Paste:** Transfer between databases
+
+## Window Management
+
+### Layout Options
+- Split window into sections
+- Nine-position layout system:
+  - Four edge positions
+  - Five central positions
+- Customizable section sizes
+- Drag-and-drop database tabs
+
+### Multi-Window Support
+- Create separate windows
+- Move databases between windows
+- Merge and split sections
+- Persistent layout memory
 
 ## System Requirements
 
@@ -43,7 +206,7 @@ A Windows-based card database editor for YGOPro, built with .NET 6.0. This tool 
 
 ## Features
 
-### Database Management
+### Database Management Features
 - Create, edit, and manage YGOPro card databases (.cdb files)
 - Compare databases and copy cards between them
 - Batch operations for multiple cards
@@ -69,21 +232,6 @@ A Windows-based card database editor for YGOPro, built with .NET 6.0. This tool 
   - Pendulum Monsters
   - Spell Cards
   - Trap Cards
-
-### Script Editor
-- Advanced Lua script editor with:
-  - Syntax highlighting
-  - Auto-completion
-  - Function tooltips
-  - Code folding
-  - Find and replace
-  - Multiple file support
-  - Template support 
-- Koishi-Style script formatting
-- Module script support
-- Script templates
-- Error checking and validation
-- Script packaging for distribution
 
 ### User Interface
 - Modern docking interface (DockPanelSuite)
@@ -118,6 +266,66 @@ A Windows-based card database editor for YGOPro, built with .NET 6.0. This tool 
 - Error tracking
 - Custom script module support
 
+## Script Editor Features
+
+### Code Editing
+- Syntax highlighting for Lua
+- Auto-completion support
+- Function tooltips
+- Code folding
+- Find and replace functionality
+- Multiple file support
+- Template support
+- Error checking and validation
+
+### Koishi-Style Features
+- Automatic script formatting
+- Module script requirements
+- Script packaging for distribution
+- Support for all card types
+- Special handling for:
+  - Non-Pendulum Normal monsters
+  - Card alias scripts
+
+## Localization Support
+
+### Language Files
+- UI Translation: `data/language_xxx.txt`
+- Card Data: `data/cardinfo_xxx.txt`
+- Easy switching between languages
+- Support for custom translations
+
+### Adding New Languages
+1. Create required files:
+   - `language_xxx.txt` for interface
+   - `cardinfo_xxx.txt` for card data
+2. Use English files as templates
+3. Translate content after Tab separators
+4. Restart application to apply
+
+## Technical Details
+
+### File Structure
+```
+DataEditorX/
+├── data/
+│   ├── cardinfo_*.txt    # Card information
+│   ├── language_*.txt    # UI translations
+│   ├── strings.conf      # Configuration
+│   └── *.lua            # Script templates
+├── templates/           # Card templates
+└── bin/                # Compiled files
+```
+
+### Dependencies
+- DockPanelSuite (3.1.0)
+- DockPanelSuite.ThemeVS2015 (3.1.0)
+- FCTB (2.16.24)
+- Microsoft.Data.Sqlite (7.0.0-preview.4)
+- NeoLua (1.3.14)
+- Newtonsoft.Json (13.0.1)
+- Serilog (4.1.0)
+
 ## Project Structure
 
 ```
@@ -134,16 +342,6 @@ DataEditorX/
 └── templates/     # Template files
 ```
 
-## Language Support
-
-The application supports multiple languages through translation files:
-- `data/language_xxx.txt`: UI translations
-- `data/cardinfo_xxx.txt`: Card information
-
-Currently supported languages:
-- English
-- Chinese
-
 ## Command Line Arguments
 
 The program supports the following command line arguments:
@@ -159,15 +357,28 @@ The program supports the following command line arguments:
 4. Push to the branch
 5. Create a Pull Request
 
-## Version
+## Coding Standards
+- Follow existing code style
+- Add comments for complex logic
+- Update documentation
+- Test thoroughly
 
-Current Version: 4.0.2.6
+## Support
+
+### Common Issues
+- **Program won't start:** Install .NET 6.0 Runtime
+- **Script editing issues:** Check file permissions
+- **Language problems:** Verify language files in data folder
+
+### Getting Help
+- Check existing issues on GitHub
+- Create detailed bug reports
+- Include error messages and steps to reproduce
 
 ## License
 
-This project uses various open-source components:
-- DockPanelSuite (3.1.0)
-- FCTB (2.16.24)
-- NeoLua (1.3.14)
-- Newtonsoft.Json (13.0.1)
-- Serilog (4.1.0)
+This project uses various open-source components under their respective licenses. See individual package documentation for details.
+
+## Version
+
+Current Version: 4.0.2.6
